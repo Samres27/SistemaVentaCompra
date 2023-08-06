@@ -1,0 +1,45 @@
+
+<div id="app" class="col-11">
+  <h2 class="marca">Siloh</h2>
+</div>
+
+<hr />
+<div class="informacionImpresion">
+  <p>Cliente: {{nombreCliente}}</p> 
+
+  <p>Impreso:  {{fechaImpresion}}</p>
+</div>
+<hr />
+<div class="tableDoc">
+  <table class="table table-borderless factura">
+    <thead>
+      <tr>
+
+        <th>Producto</th>
+        <th>Fecha</th>
+        <th>Kilos</th>
+        <th>Precio por Kilo</th>
+        <th>Importe</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      {{contenidoExtraTabla}}
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>Total a Pagar</th>
+        <th>${{cantidadTotal}}</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<div class="cond row">
+ 
+</div>
+    
+    

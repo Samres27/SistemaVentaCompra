@@ -1,0 +1,59 @@
+
+
+.factura {
+  table-layout: fixed;
+  width:100%;
+}
+
+.fact-info > div > h5 {
+  font-weight: bold;
+}
+
+.factura > thead {
+  border-top: solid 3px #000;
+  border-bottom: 3px solid #000;
+  background-color: #ff993f;
+  text-align:center;
+}
+
+.factura > thead > tr > th:nth-child(2), .factura > tbody > tr > td:nth-child(2) {
+  width: 90px;
+}
+.factura > thead > tr > th:nth-child(3), .factura > tbody > tr > td:nth-child(3) {
+  width: 90px;
+}
+
+
+
+
+.factura > thead > tr > th:nth-child(n+2) {
+  text-align: right;
+}
+
+.factura > tbody > tr > td:nth-child(n+2) {
+  text-align: right;
+}
+
+.factura > tfoot > tr > th, .factura > tfoot > tr > th:nth-child(n+3) {
+  font-size: 20px;
+  text-align: right;
+}
+
+.cond {
+  border-top: solid 2px #000;
+}
+.marca{
+  color:#ff9900;
+  font-size:100px;
+    
+}
+.tableDoc{
+  width: 80%;
+  margin: 0 auto;
+
+}
+.informacionImpresion{
+  font-size: medium ;
+  font-weight: bold;
+  font-family: Arial;
+}
