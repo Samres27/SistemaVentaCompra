@@ -6,6 +6,7 @@ from baseDeDatos import *
 import os,sys
 from ventas import *
 from datetime import datetime
+from factura import *
 class interfaz:
     def __init__(self):
         root=Tk()
@@ -32,6 +33,7 @@ class interfaz:
         menuPrecios.add_command(label="Registar Venta Huevo",accelerator="Ctrl+H",command=self.ventanaRegistarCompraHuevo)
         menuPrecios.add_command(label="añadir nuevo Envase",accelerator="Ctrl+E",command=self.interfazAniadirEnvace)
         menuPrecios.add_command(label="Cambiar precio",accelerator="Ctrl+P",command=self.ventanaPreciosHoy)
+        menuPrecios.add_command(label="imprimir deduda",accelerator="Ctrl+D",command=self.ventanaImpresion)
     
         menuBarra.add_cascade(menu=menuPrecios, label="ventas")
         root.config(menu=menuBarra)
@@ -256,6 +258,18 @@ class interfaz:
         b1=ttk.Button(IAE,text="agregar",command=partial(self.aniadirEnvace,IAE,E1,E2))
         b1.place(x=300,y=150)
         
+    def ventanaImpresion(self):
+        VI=Toplevel()    
+        VI.title("venta de impresion")
+        VI.geometry("400x300")
+        l1=Label(VI,text="elegir cliente",font=("Helvetica", 14))
+        lista=obtenerListaCliente()
+        c1=ttk.Combobox(VI,state="readonly",values=lista,width=40)
+        bot1=ttk.Button(VI,width=40,text="generar",command=partial(self.crearImpresion,VI,c1,lista))
+        l1.place(x=100,y=100)
+        c1.place(x=100,y=150)
+        bot1.place(x=100,y=200)
+        
     def ventanaRegistarCompraHuevo(self):
         
         VRC=Toplevel()
@@ -360,6 +374,10 @@ class interfaz:
         total=calcularPrecio(pesoNeto=pesoNeto,precio=precio)
 
         listaElemntos.insert("",END,text=itm,values=(precio,kilosB,pesoNeto,total))
+        
+    def crearImpresion(self,v1,c1,lista):
+        crearPDFventas(lista[c1.current()])
+        v1.destroy()
       
     def aniadirItemH(self,combobox,c1,c2,listaElemntos):
         precio=float(c1.get())

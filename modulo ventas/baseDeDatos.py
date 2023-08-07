@@ -80,6 +80,21 @@ def obtenerVentaNombreFecha(cliente,fecha):
         return valores
     except Error as e:
         print(e)
+def obtenerListaCliente():
+    conectar=sqlite3.connect("./silohDataBase.db")
+    try:
+        #obtener los valores del tipo
+        vl=conectar.execute("""SELECT DISTINCT cliente from venta 
+                         """) 
+        valores=[]
+        for x in vl:
+            (a)=x
+            valores.append(a[0])
+        conectar.close()
+        return valores
+    except Error as e:
+        print(e)
+        
 def anadirtablaArticulo(tipo,nombre,valor):
     conectar=sqlite3.connect("./silohDataBase.db")
     try:

@@ -3,6 +3,8 @@ import pdfkit
 from datetime import datetime
 from baseDeDatos import *
 from ventas import *
+import os
+import webbrowser
 def crearPDFTemplate(nombreCliente,cantidadTotal,listaElementos):
     today_date = datetime.today().strftime("%d %b, %Y")
     tablaV=valoresTabla(listaVentas=listaElementos)
@@ -25,6 +27,9 @@ def crearPDFventas(cliente):
     listaVentas=obtenerVentaNombre(cliente=cliente)
     total=calcularListaTotal(listaElmentos=listaVentas)
     crearPDFTemplate(nombreCliente=cliente,cantidadTotal=total,listaElementos=listaVentas)
+    pathActual=os.getcwd()
+    path="file://%s/ArchivosNecesario\ej2.pdf"%pathActual
+    webbrowser.open_new(path)
 
 def valoresTabla(listaVentas):
     valorTabla=""
@@ -39,5 +44,3 @@ def valoresTabla(listaVentas):
         </tr>"""%(producto,fecha,cantNeto,precio,total)
     return valorTabla
 
-
-crearPDFventas("samuel")
